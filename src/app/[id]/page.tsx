@@ -151,6 +151,33 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
             Отправить
           </Button>
         </Space>
+
+        <Flex vertical gap={5}>
+          {new Array(project.count)
+            .fill(0)
+            .map((_, i) => i + 1)
+            .map((el, index) => {
+              return (
+                <Flex key={index}>
+                  <Tag
+                    color="#f1f1f1"
+                    style={{
+                      color: "black",
+                      width: 50,
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    {el}
+                  </Tag>
+                  {realSelections[index].length > 0 && (
+                    <Tag color="#000">{realSelections[index]}</Tag>
+                  )}
+                </Flex>
+              );
+            })}
+        </Flex>
       </Flex>
     );
   }
