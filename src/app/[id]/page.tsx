@@ -235,7 +235,7 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
     <Flex gap="large" vertical align="center" justify="center">
       <Typography.Title level={2} style={{ textAlign: "center" }}>
         {selected
-          ? "Ты успешно выбрал свою позицию"
+          ? "Как же я заебался создавать репозитории"
           : "Распределение на " + project.name}
         <br />
         <Tag color="#000">{name}</Tag>
