@@ -235,7 +235,7 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
     <Flex gap="large" vertical align="center" justify="center">
       <Typography.Title level={2} style={{ textAlign: "center" }}>
         {selected
-          ? "Как же я заебался создавать репозитории"
+          ? "Удачи"
           : "Распределение на " + project.name}
         <br />
         <Tag color="#000">{name}</Tag>
@@ -277,10 +277,16 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
             })}
         </Space>
       </Radio.Group>
+
       {!selected && (
-        <Button type="primary" size="large" onClick={select}>
-          Отправить
-        </Button>
+        <>
+          <Typography.Text type="secondary" style={{ textAlign: "center" }}>
+            Будьте внимательны, выбор нельзя изменить
+          </Typography.Text>
+          <Button type="primary" size="large" onClick={select}>
+            Отправить
+          </Button>
+        </>
       )}
     </Flex>
   );
