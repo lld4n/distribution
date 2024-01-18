@@ -67,17 +67,17 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
     }
   }, [project]);
 
-  const select = () => {
+  const select = async () => {
     if (selectedPos !== 0 && project) {
-      toast.promise(
-        create({
-          name,
-          position: selectedPos,
-          project_id: project._id,
-        }),
-      );
-      localStorage.setItem("dist-selected", project._id);
-      setSelected(true);
+      const flag = await create({
+        name,
+        position: selectedPos,
+        project_id: project._id,
+      });
+      if (flag) {
+        localStorage.setItem("dist-selected", project._id);
+        setSelected(true);
+      }
     }
   };
 
@@ -234,9 +234,7 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
   return (
     <Flex gap="large" vertical align="center" justify="center">
       <Typography.Title level={2} style={{ textAlign: "center" }}>
-        {selected
-          ? "Удачи"
-          : "Распределение на " + project.name}
+        {selected ? "Удачи" : "Распределение на " + project.name}
         <br />
         <Tag color="#000">{name}</Tag>
       </Typography.Title>
