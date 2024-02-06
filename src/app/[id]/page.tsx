@@ -238,7 +238,16 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
         <br />
         <Tag color="#000">{name}</Tag>
       </Typography.Title>
-
+      {!selected && (
+        <>
+          <Typography.Text type="secondary" style={{ textAlign: "center" }}>
+            Будьте внимательны, выбор нельзя изменить
+          </Typography.Text>
+          <Button type="primary" size="large" onClick={select}>
+            Отправить
+          </Button>
+        </>
+      )}
       <Radio.Group
         buttonStyle="solid"
         size="large"
@@ -275,17 +284,6 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
             })}
         </Space>
       </Radio.Group>
-
-      {!selected && (
-        <>
-          <Typography.Text type="secondary" style={{ textAlign: "center" }}>
-            Будьте внимательны, выбор нельзя изменить
-          </Typography.Text>
-          <Button type="primary" size="large" onClick={select}>
-            Отправить
-          </Button>
-        </>
-      )}
     </Flex>
   );
 }

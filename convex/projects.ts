@@ -24,3 +24,10 @@ export const create = mutation({
     });
   },
 });
+
+export const remove = mutation({
+  args: { projects_id: v.id("projects") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.projects_id);
+  },
+});

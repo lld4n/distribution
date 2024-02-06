@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
-import { useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import Link from "next/link";
 import { Button, Card, Flex, Spin, Typography } from "antd";
 export default function Home() {
   const [admin, setAdmin] = React.useState(false);
   const projects = useQuery(api.projects.getAll);
+  const remove = useMutation(api.projects.remove);
   React.useEffect(() => {
     if (localStorage.getItem("dla") === process.env.NEXT_PUBLIC_ADMIN) {
       setAdmin(true);
@@ -35,6 +36,16 @@ export default function Home() {
                   <Link href={"/" + el._id}>
                     <Button type="dashed">Ссылка</Button>
                   </Link>
+                  <Button
+                    danger
+                    onClick={() => {
+                      remove({
+                        projects_id: el._id,
+                      });
+                    }}
+                  >
+                    Удалить
+                  </Button>
                 </Flex>
               </Card>
             );

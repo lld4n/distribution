@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <ConvexClientProvider>
           <main className="wrapper">{children}</main>
-          <Toaster position="top-center" richColors />
+          <Toaster position="top-left" richColors />
         </ConvexClientProvider>
       </body>
     </html>
