@@ -234,12 +234,16 @@ export default function IdPage({ params }: { params: { id: Id<"projects"> } }) {
   return (
     <Flex gap="large" vertical align="center" justify="center">
       <Typography.Title level={2} style={{ textAlign: "center" }}>
-        {selected
-          ? "Посмотрел исходный код этого приложения. Ахуел от того, что за хуйню я тут понаписал"
-          : "Распределение на " + project.name}
+        {selected ? "Удачи" : "Распределение на " + project.name}
         <br />
         <Tag color="#000">{name}</Tag>
       </Typography.Title>
+      {selected && (
+        <Typography.Text type="secondary" style={{ textAlign: "center" }}>
+          Посмотрел исходный код этого приложения. Такую хуйню написать - это
+          надо уметь
+        </Typography.Text>
+      )}
       {!selected && (
         <>
           <Typography.Text type="secondary" style={{ textAlign: "center" }}>
